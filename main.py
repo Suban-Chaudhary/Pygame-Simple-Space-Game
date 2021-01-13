@@ -130,7 +130,7 @@ def main():
                 BULLET_HIT_SOUND.play()
                 RED_HEALTH -= 1
             if event.type == YELLOW_HIT:
-                BULLET_HIT_SOUND
+                BULLET_HIT_SOUND.play()
                 YELLOW_HEALTH -= 1
         
         keys_pressed = pygame.key.get_pressed()
