@@ -38,8 +38,8 @@ max_bullets = 2
 RED_HIT = pygame.USEREVENT + 1
 YELLOW_HIT = pygame.USEREVENT + 2
 
-BULLET_HIT_SOUND = pygame.mixer.load(os.path.join("Assets","Grenade+1.mp3"))
-BULLET_FIRE_SOUND = pygame.mixer.load(os.path.join("Assets","Gun+Silencer.mp3"))
+BULLET_HIT_SOUND = pygame.mixer.Sound(os.path.join("Assets","Grenade+1.mp3"))
+BULLET_FIRE_SOUND = pygame.mixer.Sound(os.path.join("Assets","Gun+Silencer.mp3"))
 
 def draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_health):
     WIN.fill(WHITE)
