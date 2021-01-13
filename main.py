@@ -1,6 +1,7 @@
 import pygame
 import os
 pygame.init()
+pygame.mixer.init()
 pygame.font.init()
 
 WIDTH, HEIGHT = 700, 500
@@ -36,6 +37,9 @@ red_bullets = []
 max_bullets = 2
 RED_HIT = pygame.USEREVENT + 1
 YELLOW_HIT = pygame.USEREVENT + 2
+
+BULLET_HIT_SOUND = pygame.mixer.load(os.path.join("Assets","Grenade+1.mp3"))
+BULLET_FIRE_SOUND = pygame.mixer.load(os.path.join("Assets","Gun+Silencer.mp3"))
 
 def draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_health):
     WIN.fill(WHITE)
@@ -117,12 +121,16 @@ def main():
                 if event.key == pygame.K_LCTRL and len(red_bullets) < max_bullets:
                     bullet = pygame.Rect(red.x + red.width, red.y + (red.height//2 - 3), 10, 6)
                     red_bullets.append(bullet)
+                    BULLET_FIRE_SOUND.play()
                 if event.key == pygame.K_RCTRL and len(yellow_bullets) < max_bullets:
                     bullet = pygame.Rect(yellow.x, yellow.y + (yellow.height//2 - 3), 10, 6)
                     yellow_bullets.append(bullet)
+                    BULLET_FIRE_SOUND.play()
             if event.type == RED_HIT:
+                BULLET_HIT_SOUND.play()
                 RED_HEALTH -= 1
             if event.type == YELLOW_HIT:
+                BULLET_HIT_SOUND
                 YELLOW_HEALTH -= 1
         
         keys_pressed = pygame.key.get_pressed()
